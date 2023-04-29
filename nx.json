@@ -1,0 +1,62 @@
+{
+    "tasksRunnerOptions": {
+        "default": {
+            "runner": "@nrwl/nx-cloud",
+            "options": {
+                "cacheableOperations": ["build", "test", "lint"],
+                "accessToken": "NzIzN2Y1MWEtZGFiNC00OTY0LTkxMDItZjU2NDQzODc0MjcxfHJlYWQtd3JpdGU="
+            }
+        }
+    },
+    "defaultBase": "master",
+    "namedInputs": {
+        "sharedGlobals": [],
+        "default": ["{projectRoot}/**/*", "sharedGlobals"],
+        "production": [
+            "default",
+            "!{projectRoot}/tsconfig.spec.json",
+            "!{projectRoot}/**/*.spec.[jt]s",
+            "!{projectRoot}/karma.conf.js",
+            "!{projectRoot}/.eslintrc.json",
+            "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+            "!{projectRoot}/jest.config.[jt]s"
+        ]
+    },
+    "targetDefaults": {
+        "build": {
+            "dependsOn": ["^build"],
+            "inputs": ["production", "^production"]
+        },
+        "test": {
+            "inputs": [
+                "default",
+                "^production",
+                "{workspaceRoot}/karma.conf.js",
+                "{workspaceRoot}/jest.preset.js"
+            ]
+        },
+        "lint": {
+            "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
+        },
+        "e2e": {
+            "inputs": ["default", "^production"]
+        }
+    },
+    "defaultProject": "sakai-ng",
+    "generators": {
+        "@nrwl/angular:application": {
+            "style": "css",
+            "linter": "eslint",
+            "unitTestRunner": "jest",
+            "e2eTestRunner": "cypress"
+        },
+        "@nrwl/angular:library": {
+            "linter": "eslint",
+            "unitTestRunner": "jest",
+            "strict": false
+        },
+        "@nrwl/angular:component": {
+            "style": "css"
+        }
+    }
+}

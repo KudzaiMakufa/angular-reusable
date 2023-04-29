@@ -1,0 +1,22 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "sourceMap": true,
+        "declaration": false,
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "target": "es2017",
+        "module": "es2020",
+        "lib": ["es2020", "dom"],
+        "baseUrl": "./",
+        "paths": {
+            "admin/feature-modules": [
+                "libs/admin/feature-modules/src/index.ts"
+            ],
+            "admin/feature-shell": ["libs/admin/feature-shell/src/index.ts"],
+            "client/feature-shell": ["libs/client/feature-shell/src/index.ts"],
+            "shared/ui": ["libs/shared/ui/src/index.ts"]
+        }
+    }
+}
